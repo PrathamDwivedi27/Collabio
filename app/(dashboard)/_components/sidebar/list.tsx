@@ -15,13 +15,13 @@ export const List=()=>{
     return (
         <ul className="space-y-4">
             {userMemberships.data?.map((mem)=>(
-                <p key={mem.organization.id}>
+                <li key={mem.organization.id}>
                     <Item 
                         id={mem.organization.id}
                         name={mem.organization.name}
                         imageUrl={mem.organization.imageUrl}
                     />
-                </p>
+                </li>
             ))}
         </ul>
     )
