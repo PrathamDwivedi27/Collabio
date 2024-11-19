@@ -9,7 +9,7 @@ export default defineSchema({
         authorName:v.string(),
         imageUrl:v.string(),
     })
-        .index("by_org",["orgId"])      //secondary index, indexing kar diye hai
+        .index("by_org",["orgId"])      //secondary index, indexing kar diye hai,primary index to uska default _id hai
         .searchIndex("search_title",{
             searchField:'title',
             filterFields:['orgId']
