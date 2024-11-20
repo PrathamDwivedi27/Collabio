@@ -5,8 +5,8 @@ import EmptyFavorite from './empty-favorites';
 import EmptyBoard from './empty-board';
 import { useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
-import BoardCard from './board-card';
 import NewBoardButton from './new-board-button';
+import { BoardCard } from './board-card';
 
 interface BoardListProps {
     orgId: string;
@@ -22,8 +22,14 @@ const BoardList = ({orgId,query}:BoardListProps) => {
     if(data===undefined){       //if data is undefined means it is in loading state
         return (
             <div>
-                Loading ....
-            </div>
+        <h2 className='text-3xl'>
+            {query.favorites? 'Favorite Boards':'Team Boards'}
+        </h2>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mt-8 pb-10'>
+            <NewBoardButton orgId={orgId} disabled/>
+            <BoardCard.Skeleton/>
+        </div>
+    </div>
         )
     }
 
