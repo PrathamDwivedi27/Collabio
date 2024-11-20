@@ -32,6 +32,10 @@ const ConfirmModal= ({
     header,
     disabled
 }:ConfirmModalProps) => {
+
+    const handleConfirm=()=>{
+        onConfirm();
+    }
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -39,12 +43,16 @@ const ConfirmModal= ({
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>{header}</AlertDialogTitle>
+                    <AlertDialogTitle>
+                        {header}
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                        {description}
+                    </AlertDialogDescription>
                 </AlertDialogHeader>
-                <AlertDialogDescription>{description}</AlertDialogDescription>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={onConfirm} disabled={disabled}>Confirm</AlertDialogAction>
+                    <AlertDialogAction onClick={handleConfirm} disabled={disabled}>Confirm</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
