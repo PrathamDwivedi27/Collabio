@@ -13,5 +13,16 @@ export default defineSchema({
         .searchIndex("search_title",{
             searchField:'title',
             filterFields:['orgId']
-        })
-})
+        }),
+    
+    userFavorites:defineTable({
+        orgId:v.string(),
+        userId:v.string(),
+        boardId:v.id("boards")
+    })
+    .index("by_board",["boardId"])      //SELECT * FROM userFavorites WHERE boardId = ?
+    .index("by_user_org",["userId","orgId"])    //SELECT * FROM userFavorites WHERE userId = ? AND orgId = ?
+    .index("by_user_board",["userId","boardId"])     //SELECT * FROM userFavorites WHERE boardId = ? AND userId = ?
+    .index("by_user_board_org",["userId","boardId","orgId"]),       //SELECT * FROM userFavorites WHERE userId = ? AND boardId = ? AND orgId = ?
+
+});
