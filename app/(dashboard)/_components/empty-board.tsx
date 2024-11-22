@@ -6,10 +6,12 @@ import { useApiMutation } from '@/hooks/use-api-mutation'
 import { api } from '@/convex/_generated/api'
 import { useOrganization } from '@clerk/nextjs'
 import {toast} from 'sonner'
+import { useRouter } from 'next/navigation'
 
 
 const EmptyBoard = () => {
 
+  const router=useRouter();
   const {organization} = useOrganization();
   const {mutate,pending}=useApiMutation(api.board.create);     //instead of using useMutation which will only create , we will use our custom hook which will also see loading state and errors otherwise the things we did in that hook we have to write everywhere
   
@@ -25,6 +27,7 @@ const EmptyBoard = () => {
     .then((id)=>{     //matlab jab board create ho jaye toh id aayega
       toast.success("Board created successfully")
       // todo redirect to board/{id}
+      router.push(`/board/${id}`)     //jab board create ho jaye toh uska id aayega aur us id pe redirect ho jayega
     })
     .catch(()=>{
       toast.error("Failed to create board")

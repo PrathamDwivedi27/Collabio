@@ -17,7 +17,7 @@ interface BoardListProps {
 }
 
 const BoardList = ({orgId,query}:BoardListProps) => {
-    const data=useQuery(api.boards.get,{orgId});        //second argument is the args object
+    const data=useQuery(api.boards.get,{orgId,...query});        // spread se ab wo dono dekhega favorite aur search dono
 
     if(data===undefined){       //if data is undefined means it is in loading state
         return (
