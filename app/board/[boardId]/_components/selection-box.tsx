@@ -51,7 +51,7 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
                 }}
                 onPointerDown={(e)=>{
                     e.stopPropagation();
-                    // onResizeHandlePointer(Side.TopLeft,bounds);
+                    onResizeHandlePointer(Side.Top+Side.Left,bounds);
                 }}
             />
             <rect
@@ -67,7 +67,7 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
                 }}
                 onPointerDown={(e)=>{
                     e.stopPropagation();
-                    // onResizeHandlePointer(Side.TopLeft,bounds);
+                    onResizeHandlePointer(Side.Top,bounds);
                 }}
             />
             <rect
@@ -83,7 +83,7 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
                 }}
                 onPointerDown={(e)=>{
                     e.stopPropagation();
-                    // onResizeHandlePointer(Side.TopLeft,bounds);
+                    onResizeHandlePointer(Side.Top+Side.Right,bounds);
                 }}
             />
             <rect
@@ -99,7 +99,7 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
                 }}
                 onPointerDown={(e)=>{
                     e.stopPropagation();
-                    // onResizeHandlePointer(Side.TopLeft,bounds);
+                    onResizeHandlePointer(Side.Right,bounds);
                 }}
             />
             <rect
@@ -116,7 +116,7 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
                 }}
                 onPointerDown={(e)=>{
                     e.stopPropagation();
-                    // onResizeHandlePointer(Side.TopLeft,bounds);
+                    onResizeHandlePointer(Side.Bottom+Side.Right,bounds);
                 }}
             />
             <rect
@@ -133,7 +133,7 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
                 }}
                 onPointerDown={(e)=>{
                     e.stopPropagation();
-                    // onResizeHandlePointer(Side.TopLeft,bounds);
+                    onResizeHandlePointer(Side.Bottom,bounds);
                 }}
             />
             <rect
@@ -150,7 +150,7 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
                 }}
                 onPointerDown={(e)=>{
                     e.stopPropagation();
-                    // onResizeHandlePointer(Side.TopLeft,bounds);
+                    onResizeHandlePointer(Side.Bottom+Side.Left,bounds);
                 }}
             />
             <rect
@@ -167,7 +167,7 @@ const SelectionBox: React.FC<SelectionBoxProps> = ({
                 }}
                 onPointerDown={(e)=>{
                     e.stopPropagation();
-                    // onResizeHandlePointer(Side.TopLeft,bounds);
+                    onResizeHandlePointer(Side.Left,bounds);
                 }}
             />
         </>
