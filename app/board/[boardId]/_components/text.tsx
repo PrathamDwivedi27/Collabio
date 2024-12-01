@@ -1,5 +1,6 @@
-import { cn, colorToCss, getContrastingTextColor } from "@/lib/utils";
-import { NoteLayer } from "@/types/canvas";
+import { cn, colorToCss } from "@/lib/utils";
+ 
+import { TextLayer } from "@/types/canvas";
 import { useMutation } from "@liveblocks/react/suspense";
 import { Kalam } from "next/font/google";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
@@ -9,28 +10,28 @@ const font = Kalam({
   weight: ["400"],
 });
 
-interface NoteProps {
+interface TextProps {
   id: string;
-  layer: NoteLayer;
+  layer: TextLayer;
   onPointerDown: (e: React.PointerEvent, id: string) => void;
   selectionColor?: string;
 }
 
 const calculateFontSize = (width: number, height: number) => {
   const maxFontSize = 96;
-  const scaleFactor = 0.15;
+  const scaleFactor = 0.5;
   const fontSizeBasedOnHeight = height * scaleFactor;
   const fontSizeBasedOnWidth = width * scaleFactor;
 
   return Math.min(maxFontSize, fontSizeBasedOnHeight, fontSizeBasedOnWidth);
 };
 
-export const Note = ({
+export const Text = ({
   id,
   layer,
   onPointerDown,
   selectionColor,
-}: NoteProps) => {
+}: TextProps) => {
   const { x, y, width, height, fill, value } = layer;
 
   const updateValue = useMutation(({ storage }, newValue: string) => {
@@ -52,19 +53,17 @@ export const Note = ({
       onPointerDown={(e) => onPointerDown(e, id)}
       style={{
         outline: selectionColor ? `1px solid ${selectionColor}` : "none",
-        backgroundColor: fill ? colorToCss(fill) : "#000",
       }}
-      className="shadow-md drop-shadow-xl"
     >
       <ContentEditable
         html={value || "Text"}
         onChange={hanldeContentChange}
         className={cn(
-          "h-full w-full flex items-center justify-center outline-none",
+          "h-full w-full flex items-center justify-center drop-shadow-md outline-none",
           font.className
         )}
         style={{
-          color: fill ? getContrastingTextColor(fill) : "#000",
+          color: fill ? colorToCss(fill) : "#000",
           fontSize: calculateFontSize(width, height),
         }}
       />
