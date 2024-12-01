@@ -16,7 +16,7 @@ const font=Poppins({
 
 const OrgSidebar = () => {
   const searchParams=useSearchParams();
-  const [favorites, setFavorites] = React.useState(searchParams.get('favorites') === 'true');
+  const favorites = searchParams.get('favorites') === 'true';
   return (
     <div className='hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5 '>
       <Link href="/">
