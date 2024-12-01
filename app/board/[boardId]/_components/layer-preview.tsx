@@ -3,7 +3,6 @@
 import { LayerType } from '@/types/canvas';
 import { useStorage } from '@liveblocks/react/suspense';
 import React from 'react'
-import {memo} from 'react'
 import Rectangle from './rectangle';
 
 interface LayerPreviewProps {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import Info from './info';
 import Participants from './participants';
 import Toolbar from './toolbar';
@@ -10,11 +10,12 @@ import { useHistory,
   useMutation } from '@liveblocks/react';
 import CursorsPresence from './cursors-presence';
 import { Camera } from '@/types/canvas';
-import { pointerEventToCanvasPoint } from '@/lib/utils';
-import { useStorage } from '@liveblocks/react/suspense';
+import { connectionIdToColor, pointerEventToCanvasPoint } from '@/lib/utils';
+import { useOthersMapped, useStorage } from '@liveblocks/react/suspense';
 import {nanoid} from 'nanoid';
 import { LiveObject } from '@liveblocks/client';
 import LayerPreview from './layer-preview';
+import SelectionBox from './selection-box';
 
 
 
@@ -32,7 +33,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
    });
 
    const [camera,setCamera]=React.useState<Camera>({x:0,y:0});
-   const [lastUsedColor,setLastUsedColor]=React.useState<Color>({r:0,g:0,b:0});
+   const [lastUsedColor,setLastUsedColor]=React.useState<Color>({r:255,g:255,b:255});
 
    const history=useHistory();
    const canUndo=useCanUndo();
@@ -124,8 +125,47 @@ const Canvas = ({ boardId }: CanvasProps) => {
       history.resume();
     },[camera,canvasState,insertLayer,history]);
 
+    const selections=useOthersMapped((other)=>other.presence.selection);
+
+    const onLayerPointerDown=useMutation(({self,setMyPresence},e:React.PointerEvent,layerId:string)=>{
+      if(
+        canvasState.mode===CanvasMode.Pencil ||
+        canvasState.mode===CanvasMode.Inserting
+      ){
+        return ;
+      }
+      history.pause();
+      e.stopPropagation();
+
+      const point=pointerEventToCanvasPoint(e,camera);
+
+      if(!self.presence.selection.includes(layerId)){
+        setMyPresence({
+          selection:[layerId],
+        },{
+          addToHistory:true,
+        });
+      }
+      setCanvasState({
+        mode:CanvasMode.Translating,
+        current:point,
+      });
 
 
+    },[setCanvasState,history,camera,canvasState.mode]);
+    
+    const layerIdsToColorSelection=useMemo(()=>{
+      const layerIdsToColorSelection:Record<string,string>={};
+
+      for (const user of selections){
+        const [connectionId,selection]=user;
+
+        for (const layerId of selection){
+          layerIdsToColorSelection[layerId]=connectionIdToColor(connectionId);
+        }
+      }
+      return layerIdsToColorSelection;
+    },[selections]);
 
   return (
     <main
@@ -157,11 +197,14 @@ const Canvas = ({ boardId }: CanvasProps) => {
             <LayerPreview
               key={layerId}
               id={layerId}
-              onLayerPointerDown={()=>{}}
-              selectionColor="blue"
+              onLayerPointerDown={onLayerPointerDown}
+              selectionColor={layerIdsToColorSelection[layerId]}
               // ye selection color ye hai ki agar koi layer bna rha hai to baaki user ko dikhe ki use ho rha hai aur ye color user ke cursor jaisa hoga 
             />
           ))}
+          <SelectionBox
+            onResizeHandlePointerDown={()=>{}}
+          />
           <CursorsPresence />
         </g>
       </svg>
