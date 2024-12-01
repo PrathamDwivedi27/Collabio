@@ -77,7 +77,7 @@ const Toolbar = ({
         />
         <ToolButton
           label='Pen'
-          icon={Pencil}
+          icon={Pencil} 
           onClick={()=>setCanvasState({mode:CanvasMode.Pencil})}
           isActive={
             canvasState.mode === CanvasMode.Pencil

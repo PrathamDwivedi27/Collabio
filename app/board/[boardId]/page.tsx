@@ -3,7 +3,7 @@
 import React from "react";
 import { Room } from "@/components/room";
 import Loading from "./_components/loading";
-import Canvas from "./_components/canvas";
+import { Canvas } from "./_components/canvas";
 
 interface BoardIdPageProps {
   params: {
