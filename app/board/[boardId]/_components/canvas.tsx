@@ -16,6 +16,8 @@ import {nanoid} from 'nanoid';
 import { LiveObject } from '@liveblocks/client';
 import LayerPreview from './layer-preview';
 import SelectionBox from './selection-box';
+import { SelectionTools } from './selection-tools';
+
 
 
 
@@ -283,6 +285,10 @@ const Canvas = ({ boardId }: CanvasProps) => {
         redo={history.redo}
         canUndo={canUndo}
         canRedo={canRedo}
+      />
+      <SelectionTools
+        camera={camera}
+        setLastUsedColor={setLastUsedColor}
       />
       {/* In this g element we will store all our resizable translatable elements, sticky notes */}
       <svg className='h-[100vh] w-[100vw]'
