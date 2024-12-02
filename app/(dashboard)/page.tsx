@@ -1,17 +1,15 @@
-"use client";
-
+"use client"
+import React from "react";
+import EmptyOrg from "./_components/EmptyOrg";
 import { useOrganization } from "@clerk/nextjs";
-import  EmptyOrg  from "./_components/EmptyOrg";
-import  BoardList  from "./_components/board-list";
+import BoardList from "./_components/board-list";
 
+// Define the interface for the page props
 interface DashboardPageProps {
-  searchParams: {
-    search?: string;
-    favourites?: string;
-  };
+  searchParams?: Record<string, string | undefined>;
 }
 
-export default function DashboardPage({ searchParams }: DashboardPageProps) {
+const DashboardPage = ({ searchParams }: DashboardPageProps) => {
   const { organization } = useOrganization();
 
   return (
@@ -19,8 +17,14 @@ export default function DashboardPage({ searchParams }: DashboardPageProps) {
       {!organization ? (
         <EmptyOrg />
       ) : (
-        <BoardList orgId={organization.id} query={(searchParams as unknown) || {}} />
+        <BoardList
+          orgId={organization.id}
+          query={searchParams as Record<string, string | undefined>} // Type assertion
+        />
       )}
     </div>
   );
-}
+};
+
+
+export default DashboardPage;
