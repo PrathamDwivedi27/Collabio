@@ -67,34 +67,42 @@ Collabio is a **real-time collaboration platform** designed for creativity and p
 *(Add your images here with descriptions to showcase the flow and features. For example:)*
 
 1. **Authentication with Clerk**  
-   ![Authentication](E:\VS-CODE\Projects\Collabio\images\1.png)  
+   ![Authentication](./images/1.png)  
    Log in or sign up securely using Clerk.
 
 2. **Dashboard**  
-   ![Dashboard](path-to-dashboard-image)  
+   ![Dashboard](./images/2.png)  
    Create organizations and view your boards at a glance.
 
-3. **Create a Board**  
-   ![Create Board](path-to-create-board-image)  
+3. **Create a Organisation**  
+   ![Create Board](./images/3.png)  
    Easily create boards and start collaborating instantly.
 
-4. **Real-Time Collaboration**  
-   ![Collaboration](path-to-collaboration-image)  
+4. **Create a Board**  
+   ![Create Board](./images/4.png)  
+   Easily create boards and start collaborating instantly.
+
+5. **Real-Time Collaboration**  
+   ![Collaboration](./images/8.png)  
    Experience seamless real-time collaboration with your team.
 
-5. **Notifications**  
-   ![Notifications](path-to-notifications-image)  
-   Stay updated with real-time notifications for invites and actions.
+6. **Inviting Members**  
+   ![Invitaion](./images/7.png)  
+   Invite members or your team mates and work in collaboration
+
+7. **🌟 Enjoy with Infinite Canvas**  
+   ![Drawing](./images/6.png)  
+   Collaborate effortlessly with limitless space to draw, sketch, and ideate in real time.  
+
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, Tailwind CSS  
-- **Backend**: Node.js, Express  
-- **Database**: MongoDB  
+- **UI**: NextJs, Tailwind , Shadcn UI  
+- **Database**: Convex  
 - **Authentication**: Clerk  
-- **Real-Time Updates**: Pusher  
+- **Real-Time Updates**: Liveblocks  
 - **Deployment**: Vercel
 
 ---
@@ -122,6 +130,6 @@ Want to contribute to Collabio? Feel free to fork the repository, make your chan
 
 ## 📬 Contact
 
-For questions, suggestions, or feedback, reach out at [your-email@example.com](mailto:your-email@example.com).
+For questions, suggestions, or feedback, reach out at [your-email@example.com](mailto:pratham27dw@gmail.com).
 
 Let’s collaborate and create magic with **Collabio**!
