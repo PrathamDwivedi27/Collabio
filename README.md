@@ -130,6 +130,6 @@ Want to contribute to Collabio? Feel free to fork the repository, make your chan
 
 ## 📬 Contact
 
-For questions, suggestions, or feedback, reach out at [your-email@example.com](mailto:pratham27dw@gmail.com).
+For questions, suggestions, or feedback, reach out to me [here](mailto:pratham27dw@gmail.com).
 
 Let’s collaborate and create magic with **Collabio**!
