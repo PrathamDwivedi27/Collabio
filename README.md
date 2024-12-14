@@ -2,6 +2,9 @@
 
 Collabio is a **real-time collaboration platform** designed for creativity and productivity. It provides an **infinite canvas space** where you can unleash your imagination using various tools such as **pencil, rectangle, ellipse, sticky notes**, and more. Whether you’re brainstorming ideas, sketching designs, or managing projects, Collabio offers an intuitive and collaborative environment.
 
+## Demo Video  
+[![Watch the Demo](https://img.youtube.com/vi/2kQdNODxtAo/0.jpg)](https://www.youtube.com/watch?v=2kQdNODxtAo&ab_channel=PrathamDwivedi) 
+
 ---
 
 ## ✨ Key Features
